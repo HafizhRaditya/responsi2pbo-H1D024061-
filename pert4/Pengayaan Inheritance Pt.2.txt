@@ -1,0 +1,60 @@
+[PERTANYAAN PENGAYAAN]
+
+1. Mengapa constructor di class Member wajib memanggil constructor Customer menggunakan super(...)?
+
+2. Apa tujuan memanggil super.tampilkanInfo() saat melakukan overriding method di subclass?
+
+3. Berikan contoh kondisi di mana pemanggilan super.method() sangat penting dalam pewarisan.
+
+4. Bagaimana keyword super membantu membedakan atribut yang memiliki nama sama antara parent dan child?
+
+5. Mengapa pendekatan inheritance lebih efisien dibanding menyalin ulang seluruh atribut dan method ke dalam class Member?
+
+
+Jawaban :
+
+1. Karena atribut parent (nama, idCustomer, totalBelanja) harus diinisialisasi terlebih dahulu sebelum atribut child (poinReward, level). super() harus dipanggil pada baris pertama constructor.
+
+2. Untuk menggunakan implementasi parent terlebih dahulu, kemudian menambah fungsionalitas baru di child tanpa mengganti seluruh logic parent.
+
+3. Ketika child class ingin extend (memperluas) bukan replace (mengganti) fungsionalitas parent.
+contoh :
+
+// Parent
+public class Kendaraan {
+    public void start() {
+        System.out.println("Kendaraan dinyalakan");
+    }
+}
+
+// Child
+public class Motor extends Kendaraan {
+    @Override
+    public void start() {
+        super.start(); // Panggil parent
+        System.out.println("Mesin motor berbuyi BRUMMM!"); // Tambah behavior
+    }
+}
+
+4. super.atribut mereferensikan parent, this.atribut mereferensikan child.
+
+public class Vehicle {
+    protected String nama = "Kendaraan";
+}
+
+public class Car extends Vehicle {
+    protected String nama = "Mobil";
+    
+    public void cetak() {
+        System.out.println(super.nama); // Output: "Kendaraan" (parent)
+        System.out.println(this.nama);  // Output: "Mobil" (child)
+    }
+}
+
+5. Jawaban:
+
+DRY Principle: Satu sumber kebenaran (single source of truth)
+Maintainability: Perubahan atribut parent langsung diterapkan ke semua child
+Memory Efficient: Tidak duplikasi kode
+Scalability: Mudah menambah child class baru
+Consistency: Memastikan semua child memiliki behavior sama dari parent
