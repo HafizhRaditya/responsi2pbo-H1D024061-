@@ -1,0 +1,40 @@
+Setelah anda menyelesaikan kode, tolong jawab pertanyaan dibawah ini ya =
+
+
+1. Apa tujuan utama adanya interface dalam pemrograman berorientasi objek, dan bagaimana interface membantu menciptakan kontrak perilaku?
+2. Mengapa interface dapat memiliki banyak implementasi, dan apa makna konseptual dari kemampuan tersebut dalam desain sistem?
+3. Apa perbedaan mendasar antara extends dan implements dalam konteks interface, jika dilihat secara konsep tanpa melihat contoh kode?
+4. Apa alasan diperkenalkannya default method dalam interface, dan bagaimana fitur ini memengaruhi keberlangsungan (compatibility) suatu sistem yang sudah berjalan?
+5. Bagaimana konsep multiple interface memperluas fleksibilitas desain tanpa menimbulkan masalah kompleksitas yang biasa muncul pada multiple inheritance?
+
+
+Jawab :
+
+1. Interface mendefinisikan kontrak perilaku (behavior contract) yang harus dipenuhi class. Tujuannya:
+
+Memastikan class implement specific behavior
+Mendefinisikan API yang jelas
+Mendukung loose coupling & flexibility
+Memungkinkan multiple inheritance behavior
+
+2. Interface adalah abstraksi dari behavior, bukan implementasi konkret. Makna konseptual:
+
+Flexibility: Berbagai cara berbeda implement behavior sama
+Scalability: Mudah menambah implementasi baru tanpa ubah yang lama
+Decoupling: Client tidak perlu tahu detail implementasi, hanya kontrak
+Strategy Pattern: Pilih implementasi berbeda saat runtime
+
+3. 
+Extends : Inheritance dari class/interface, IS-A relationship (adalah), Mewarisi state & behavior,
+Single parent, class Car extends Vehicle, Pewarisan atribut & method
+
+Implements : Implementasi interface, CAN-DO relationship (bisa melakukan), Mengadopsi kontrak behavior, Multiple parents (interface), class Car implements Drawable, Janji mengimplementasi method
+
+4. Default method diperkenalkan untuk backward compatibility. Ketika interface di-evolve dengan method baru, class yang sudah implement interface tidak langsung error.
+
+5. Multiple interface tidak menimbulkan diamond problem (ambiguitas) karena:
+
+Interface hanya kontrak (tidak ada state conflict)
+Tidak ada implementasi yang bertabrakan
+Class harus explicitly implementasi setiap method
+Fokus pada behavior, bukan inheritance hierarchies
