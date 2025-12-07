@@ -1,0 +1,42 @@
+Pertanyaan Refleksi
+Setelah menyelesaikan kode, jawab pertanyaan berikut:
+
+1. Apa itu abstract class dan Kenapa kita membutuhkan Abstarct class?
+2. Apa perbedaan utama antara abstract class dan class biasa dalam pemrograman berorientasi objek? 
+3. Mengapa subclass wajib mengimplementasikan semua abstract method dari parent class?
+4. Mengapa abstract method tidak boleh memiliki isi implementasi di dalam abstract class?
+5. Bagaimana abstract class dapat mendukung konsep polimorfisme, dan mengapa objek yang direferensikan melalui tipe abstract class tetap dapat menjalankan perilaku berbeda pada masing-masing subclass?
+
+1. Abstract class adalah class yang tidak bisa di-instantiate (tidak bisa langsung dibuat object) dan berfungsi sebagai blueprint/template untuk subclass.
+
+Mengapa kita butuh abstract?
+
+Mendefinisikan kontrak behavior yang harus diimplementasi subclass
+Menyembunyikan implementasi detail yang berbeda-beda di subclass
+Mendukung polimorfisme
+Memastikan consistency struktur di seluruh hierarchy
+
+2. Abstract class : Tidak bisa di-instantiate, Bisa punya abstract method
+Bisa punya state dan constructor, Untuk blueprint/template, Menggunakan abstract keyword
+
+Class biasa : Bisa di-instantiate langsung, Semua method sudah implemented,
+Punya state dan constructor, Untuk object konkret, Tidak perlu keyword khusus
+
+3. Karena abstract method adalah kontrak/janji yang harus dipenuhi subclass. Jika tidak diimplementasi, akan terjadi compile error. Hal ini memastikan setiap subclass memiliki implementasi lengkap.
+
+contoh :
+public class PesawatTempur extends KendaraanGalaksi {
+    @Override
+    public void aktifkanMesin() { ... } // WAJIB ada
+    
+    @Override
+    public void jelajah(int jarak) { ... } // WAJIB ada
+    
+    @Override
+    public void isiEnergi(int jumlah) { ... } // WAJIB ada
+}
+
+4. Karena tujuan abstract method adalah mendefinisikan interface/kontrak saja, bukan implementasi. Implementasi akan berbeda-beda di setiap subclass sesuai karakteristiknya.
+
+5. Array atau variabel bertipe abstract class bisa menyimpan object dari berbagai subclass, dan method yang dipanggil akan sesuai dengan tipe actual object (dynamic dispatch).
+
